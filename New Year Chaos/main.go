@@ -38,55 +38,6 @@ func minimumBribes(q []int32) {
 
 }
 
-// Complete the minimumBribes function below.
-func minimumBribes3(q []int32) {
-	var tot, temp int32
-	diff := float64(0)
-	// fmt.Println(q)
-	for _, v := range q {
-		temp++
-		if v > temp {
-			diff = math.Abs(float64(v - temp))
-			if diff > 2 {
-				fmt.Println("Too chaotic")
-				return
-			}
-			tot += int32(diff)
-
-		}
-
-	}
-	//fmt.Println(oneMove, twoMove, oneMove-twoMove)
-	fmt.Println(tot)
-
-}
-func minimumBribes2(q []int32) {
-	//sizQ := int32(len(q))
-	var temp, oneMove, twoMove int32
-	diff := float64(0)
-	fmt.Println(q)
-	for _, v := range q {
-		temp++
-		if v <= temp+2 && v >= temp-2 {
-
-			diff = math.Abs(float64(v - temp))
-			if diff == 1 {
-				oneMove++
-			} else {
-				twoMove++
-			}
-
-		} else {
-			fmt.Println("Too chaotic")
-			return
-
-		}
-
-	}
-	//fmt.Println(oneMove, twoMove, oneMove-twoMove)
-	fmt.Println(oneMove - twoMove)
-
-}
 func main() {
 	f, err := os.Open("input.txt")
 	checkError(err)
