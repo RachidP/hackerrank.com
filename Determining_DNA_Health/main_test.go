@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package main
 
 import (
@@ -117,6 +118,8 @@ func temp(b *testing.B) *node {
 
 }
 =======
+=======
+>>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
 package main
 
 import (
@@ -234,4 +237,7 @@ func temp(b *testing.B) *node {
 	return root
 
 }
+<<<<<<< HEAD
+>>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
+=======
 >>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6

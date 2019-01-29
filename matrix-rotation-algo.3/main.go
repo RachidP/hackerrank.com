@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package main
 
 import (
@@ -140,6 +141,8 @@ func printMat(a []uint64, r uint64) {
 	fmt.Printf("\n")
 }
 =======
+=======
+>>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
 package main
 
 import (
@@ -280,4 +283,7 @@ func printMat(a []uint64, r uint64) {
 	}
 	fmt.Printf("\n")
 }
+<<<<<<< HEAD
+>>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
+=======
 >>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6

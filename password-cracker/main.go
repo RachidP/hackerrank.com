@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package main
 
 import (
@@ -75,6 +76,8 @@ func _crack(keys []string, password string, res *[]string) bool {
 
 }
 =======
+=======
+>>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
 package main
 
 import (
@@ -150,4 +153,7 @@ func _crack(keys []string, password string, res *[]string) bool {
 	return false
 
 }
+<<<<<<< HEAD
+>>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
+=======
 >>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6

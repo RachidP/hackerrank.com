@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 // An Item is something we manage in a priority queue.
 package main
 
@@ -43,6 +44,8 @@ func (pq *graph) update(v *node) {
 	heap.Fix(pq, v.index)
 }
 =======
+=======
+>>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
 // An Item is something we manage in a priority queue.
 package main
 
@@ -86,4 +89,7 @@ func (pq *graph) update(v *node) {
 
 	heap.Fix(pq, v.index)
 }
+<<<<<<< HEAD
+>>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
+=======
 >>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6

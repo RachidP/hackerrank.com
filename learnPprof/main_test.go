@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package main
 
 import "testing"
@@ -50,6 +51,8 @@ func BenchmarkFib( b *testing.B){
 		fib(n)
 	}
 =======
+=======
+>>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
 package main
 
 import "testing"
@@ -100,5 +103,8 @@ func BenchmarkFib( b *testing.B){
 	for n:=0; n< b.N; n++{
 		fib(n)
 	}
+<<<<<<< HEAD
+>>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
+=======
 >>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
 }

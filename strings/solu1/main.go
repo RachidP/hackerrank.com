@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package main
 
 import (
@@ -251,6 +252,8 @@ func diceSumRolls(dice int, desiredSum int) {
 
 }
 =======
+=======
+>>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
 package main
 
 import (
@@ -502,4 +505,7 @@ func diceSumRolls(dice int, desiredSum int) {
 	diceSumHelper(dice, chosen, desiredSum, 0)
 
 }
+<<<<<<< HEAD
+>>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
+=======
 >>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6

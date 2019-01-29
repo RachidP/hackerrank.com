@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package main
 
 //https://www.youtube.com/watch?v=zVrPdF7f4-I
@@ -86,6 +87,8 @@ func getGraph() {
 
 }
 =======
+=======
+>>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
 package main
 
 //https://www.youtube.com/watch?v=zVrPdF7f4-I
@@ -172,4 +175,7 @@ func getGraph() {
 	g.mstPrime(idOrigin - 1)
 
 }
+<<<<<<< HEAD
+>>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
+=======
 >>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
