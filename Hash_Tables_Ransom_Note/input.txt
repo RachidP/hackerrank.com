@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 6 5
 two times three is not four
+=======
+6 5
+two times three is not four
+>>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
 two times two is four

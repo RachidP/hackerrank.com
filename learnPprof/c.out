@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 mode: set
 github.com\RachidP\GoTraining\go_design_pattern\hackerrank.com\learnPprof\main.go:7.13,9.2 1 0
 github.com\RachidP\GoTraining\go_design_pattern\hackerrank.com\learnPprof\main.go:11.20,12.8 1 1
 github.com\RachidP\GoTraining\go_design_pattern\hackerrank.com\learnPprof\main.go:15.2,15.28 1 1
 github.com\RachidP\GoTraining\go_design_pattern\hackerrank.com\learnPprof\main.go:12.8,14.3 1 1
+=======
+mode: set
+github.com\RachidP\GoTraining\go_design_pattern\hackerrank.com\learnPprof\main.go:7.13,9.2 1 0
+github.com\RachidP\GoTraining\go_design_pattern\hackerrank.com\learnPprof\main.go:11.20,12.8 1 1
+github.com\RachidP\GoTraining\go_design_pattern\hackerrank.com\learnPprof\main.go:15.2,15.28 1 1
+github.com\RachidP\GoTraining\go_design_pattern\hackerrank.com\learnPprof\main.go:12.8,14.3 1 1
+>>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6

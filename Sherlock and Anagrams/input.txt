@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 6
 mam
 abba
 abcd
 ifailuhkqq
 kkkk
+=======
+6
+mam
+abba
+abcd
+ifailuhkqq
+kkkk
+>>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
 cdcd
