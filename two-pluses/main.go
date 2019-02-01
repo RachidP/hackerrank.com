@@ -21,7 +21,8 @@ var (
 	nRows, nCln int
 	mat         [][]int32
 	m           = make(map[int][4]int)
-	maxArea     = -100
+
+	pluses [][]int
 )
 
 // Complete the twoPluses function below.
@@ -41,31 +42,53 @@ func twoPluses(grid []string) int32 {
 			checkIsPlus(i, j)
 		}
 	}
-	checkOverlay()
-	return -1
+
+	fmt.Println(pluses)
+	return checkOverlay()
+
 }
 
-func checkOverlay() {
-	for k, v := range m {
-		area, length := getArea(v)
-		if area == 1 {
-			continue
+func checkOverlay() int32 {
+	maxArea := math.MinInt32
+	nPluses := len(pluses)
+	var overlab bool
+	for i := 0; i < nPluses; i++ {
+		vv1 := pluses[i]
+		for j := i + 1; j < len(pluses); j++ {
+			overlab = false
+			vv2 := pluses[j]
+
+		Restart:
+			for _, v1 := range vv1 {
+				for _, v2 := range vv2 {
+					if v1 == v2 {
+						overlab = true
+						break Restart
+					}
+				}
+
+			}
+
+			if !overlab {
+				tmp := len(vv1) * len(vv2)
+				if maxArea < tmp {
+
+					maxArea = tmp
+				}
+			}
+
 		}
-		fmt.Println(k, v, area, length)
-		buildPlus(k, length)
 	}
-
-}
-
-func buildPlus(k, lenght int) {
+	fmt.Println("Max Area: ", maxArea)
+	return int32(maxArea)
 
 }
 
 func checkIsPlus(row, cl int) {
-	// //check if there is a
-	// count := 4
+
 	//neighbour := [4]int{up,left,down,right}
 	neighbour := [4]int{0, 0, 0, 0}
+
 	//concatenate numbers
 	cncUp := concatenate(row-1, cl)
 	cncLeft := concatenate(row, cl-1)
@@ -82,6 +105,7 @@ func checkIsPlus(row, cl int) {
 		if mat[row-1][cl] == 1 {
 
 			neighbour[up] = 1
+
 		}
 		//count number of cells of 1 bellow the current cell
 		for r := row + 1; r < nRows && (mat[r][cl] == 1); r++ {
@@ -97,21 +121,25 @@ func checkIsPlus(row, cl int) {
 
 	} else { //calcolate number elements on the right and left of the current cell
 
-		//left: check if the left cell is 1
+		//left: check if the LEFT cell is 1
 		if mat[row][cl-1] == 1 {
 
 			neighbour[left] = 1
+
 		}
-		//count number of cells on "1" on the right of the current cell
+		//count number of cells on "1" on the RIGHT of the current cell
 		for c := cl + 1; c < nCln && (mat[row][c] == 1); c++ {
 			neighbour[right]++
 		}
+
 	}
 
 	//add the
-	m[concatenate(row, cl)] = neighbour
+	center := concatenate(row, cl)
+	m[center] = neighbour
 
 	// area := getArea(neighbour)
+	getPluses(neighbour, center)
 
 	// fmt.Println(neighbour, area)
 
@@ -132,7 +160,76 @@ func getArea(mat [4]int) (int, int) {
 		}
 
 	}
+
 	return (minAbs * 4) + 1, minAbs
+}
+func getPluses(mat [4]int, center int) {
+
+	minAbs := math.MaxInt32 - 1
+
+	for _, v := range mat {
+		//check if is a plus (a plus can't contain a zero value)
+		// if v <= 0 {
+		// 	return
+		// }
+		if v <= minAbs {
+			minAbs = v
+
+		}
+
+	}
+
+	plus := make([]int, 1+(minAbs*4))
+	//PS: the order is important because sort the cells
+	plus[len(plus)/2] = center
+	for i := 0; i < minAbs; i++ {
+		movTen := 10 * (i + 1)
+
+		plus[i] = center - movTen //up
+
+		plus[minAbs+i] = center - minAbs + i //left
+
+		plus[(minAbs*2+1)+i] = center + (i + 1) //Right
+
+		plus[(minAbs*3+1)+i] = center + movTen //Down
+	}
+	// for i := 0; i < minAbs; i++ {
+	// 	movTen := 10 * (i + 1)
+
+	// 	plus[i] = center - movTen //up
+
+	// 	plus[minAbs+i] = center - minAbs + i //left
+
+	// 	plus[(minAbs*2)+i] = center + (i + 1) //Right
+
+	// 	plus[(minAbs*3)+i] = center + movTen //Down
+	// }
+	//fmt.Println(plus)
+	pluses = append(pluses, plus)
+	// //UP
+	// for i := 0; i < minAbs; i++ {
+	// 	plus[i] = center - 10*(i+1)
+
+	// }
+	// //LEFT
+	// for i := 0; i < minAbs; i++ {
+	// 	plus[i] = center - minAbs + i
+
+	// }
+	// //RIGHT
+	// for i := 0; i < minAbs; i++ {
+	// 	plus[i] = center + (i + 1)
+
+	// }
+
+	// //DOWN
+	// for i := 0; i < minAbs; i++ {
+	// 	plus[i] = center + 10*(i+1)
+
+	// }
+	fmt.Println("plus:", plus)
+
+	//return (minAbs * 4) + 1, minAbs
 }
 
 //concatenate two numbers ex a=10, b=20 it will return c= 1020
@@ -201,6 +298,7 @@ func main() {
 	result := twoPluses(grid)
 
 	fmt.Fprintf(writer, "%d\n", result)
+	//fmt.Println(pluses)
 
 	writer.Flush()
 }
@@ -217,5 +315,23 @@ func readLine(reader *bufio.Reader) string {
 func checkError(err error) {
 	if err != nil {
 		panic(err)
+	}
+}
+
+func example() {
+
+	guestList := []string{"bill", "jill", "joan"}
+	arrived := []string{"sally", "jill", "joan"}
+
+CheckList:
+	for _, guest := range guestList {
+		for _, person := range arrived {
+			fmt.Printf("Guest[%s] Person[%s]\n", guest, person)
+
+			if person == guest {
+				fmt.Printf("Let %s In\n", person)
+				break CheckList
+			}
+		}
 	}
 }
