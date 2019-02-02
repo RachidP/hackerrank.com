@@ -1,18 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 2
 hello
 world
 hi
-=======
-=======
->>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
-2
-hello
-world
-hi
-<<<<<<< HEAD
->>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
-=======
->>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
 world

@@ -1,22 +1,7 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 6
 a b c aa d b
 1 2 3 4 5 6
 3
 1 5 caaab
 0 4 xyz
-=======
-=======
->>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
-6
-a b c aa d b
-1 2 3 4 5 6
-3
-1 5 caaab
-0 4 xyz
-<<<<<<< HEAD
->>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
-=======
->>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
 2 4 bcdybc
