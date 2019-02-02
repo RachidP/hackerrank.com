@@ -20,9 +20,9 @@ const (
 var (
 	nRows, nCln int
 	mat         [][]int32
-	m           = make(map[int][4]int)
+	m           = make(map[string][4]int)
 
-	pluses [][]int
+	pluses [][]string
 )
 
 // Complete the twoPluses function below.
@@ -31,7 +31,7 @@ func twoPluses(grid []string) int32 {
 	fmt.Println(grid)
 
 	mat, nRows, nCln = transtoMat(grid)
-
+	//fmt.Println(mat)
 	for i := 1; i < nRows-1; i++ {
 
 		for j := 1; j < nCln-1; j++ {
@@ -43,7 +43,7 @@ func twoPluses(grid []string) int32 {
 		}
 	}
 
-	fmt.Println(pluses)
+	//fmt.Println(pluses)
 	return checkOverlay()
 
 }
@@ -54,7 +54,7 @@ func checkOverlay() int32 {
 	var overlab bool
 	for i := 0; i < nPluses; i++ {
 		vv1 := pluses[i]
-		for j := i + 1; j < len(pluses); j++ {
+		for j := i + 1; j < nPluses; j++ {
 			overlab = false
 			vv2 := pluses[j]
 
@@ -72,7 +72,7 @@ func checkOverlay() int32 {
 			if !overlab {
 				tmp := len(vv1) * len(vv2)
 				if maxArea < tmp {
-
+					//fmt.Println("newMax: ", vv1, vv2, " area ", tmp)
 					maxArea = tmp
 				}
 			}
@@ -92,11 +92,11 @@ func checkIsPlus(row, cl int) {
 	//concatenate numbers
 	cncUp := concatenate(row-1, cl)
 	cncLeft := concatenate(row, cl-1)
-	//fmt.Println(row, cl, cnc)
 
 	//check if the upper cell exist in the map, then update data
 	if v, ok := m[cncUp]; ok {
 		neighbour[up] = v[up] + 1
+
 		neighbour[down] = v[down] - 1
 
 	} else {
@@ -114,7 +114,7 @@ func checkIsPlus(row, cl int) {
 
 	}
 
-	//check if the left cell exist in the map, then update data
+	//check if the LEFT/RIGHT cell exist in the map, then update data
 	if v, ok := m[cncLeft]; ok {
 		neighbour[left] = v[left] + 1
 		neighbour[right] = v[right] - 1
@@ -139,105 +139,52 @@ func checkIsPlus(row, cl int) {
 	m[center] = neighbour
 
 	// area := getArea(neighbour)
-	getPluses(neighbour, center)
-
-	// fmt.Println(neighbour, area)
+	getPluses(neighbour, row, cl)
 
 }
 
-func getArea(mat [4]int) (int, int) {
+func getPluses(mat [4]int, row, cl int) {
 
 	minAbs := math.MaxInt32 - 1
 
 	for _, v := range mat {
-		//check if is a plus (a plus can't contain a zero value)
-		if v <= 0 {
-			return 1, 0 //1 is the area of the current element
-		}
+
 		if v <= minAbs {
 			minAbs = v
 
 		}
 
 	}
+	for minAbs >= 0 {
 
-	return (minAbs * 4) + 1, minAbs
-}
-func getPluses(mat [4]int, center int) {
+		plus := make([]string, 1+(minAbs*4))
 
-	minAbs := math.MaxInt32 - 1
+		plus[len(plus)/2] = concatenate(row, cl)
+		for i := 0; i < minAbs; i++ {
+			movTen := (i + 1)
 
-	for _, v := range mat {
-		//check if is a plus (a plus can't contain a zero value)
-		// if v <= 0 {
-		// 	return
-		// }
-		if v <= minAbs {
-			minAbs = v
+			plus[i] = concatenate(row-minAbs+i, cl) //up
+
+			plus[minAbs+i] = concatenate(row, cl-minAbs+i) //left
+
+			plus[(minAbs*2+1)+i] = concatenate(row, cl+movTen) //Right
+
+			plus[(minAbs*3+1)+i] = concatenate(row+movTen, cl) //Down
 
 		}
 
+		pluses = append(pluses, plus)
+		minAbs--
+
 	}
+	// fmt.Println("plus:", plus)
 
-	plus := make([]int, 1+(minAbs*4))
-	//PS: the order is important because sort the cells
-	plus[len(plus)/2] = center
-	for i := 0; i < minAbs; i++ {
-		movTen := 10 * (i + 1)
-
-		plus[i] = center - movTen //up
-
-		plus[minAbs+i] = center - minAbs + i //left
-
-		plus[(minAbs*2+1)+i] = center + (i + 1) //Right
-
-		plus[(minAbs*3+1)+i] = center + movTen //Down
-	}
-	// for i := 0; i < minAbs; i++ {
-	// 	movTen := 10 * (i + 1)
-
-	// 	plus[i] = center - movTen //up
-
-	// 	plus[minAbs+i] = center - minAbs + i //left
-
-	// 	plus[(minAbs*2)+i] = center + (i + 1) //Right
-
-	// 	plus[(minAbs*3)+i] = center + movTen //Down
-	// }
-	//fmt.Println(plus)
-	pluses = append(pluses, plus)
-	// //UP
-	// for i := 0; i < minAbs; i++ {
-	// 	plus[i] = center - 10*(i+1)
-
-	// }
-	// //LEFT
-	// for i := 0; i < minAbs; i++ {
-	// 	plus[i] = center - minAbs + i
-
-	// }
-	// //RIGHT
-	// for i := 0; i < minAbs; i++ {
-	// 	plus[i] = center + (i + 1)
-
-	// }
-
-	// //DOWN
-	// for i := 0; i < minAbs; i++ {
-	// 	plus[i] = center + 10*(i+1)
-
-	// }
-	fmt.Println("plus:", plus)
-
-	//return (minAbs * 4) + 1, minAbs
 }
 
 //concatenate two numbers ex a=10, b=20 it will return c= 1020
-func concatenate(a, b int) int {
+func concatenate(row, cl int) string {
 
-	result, err := strconv.Atoi(fmt.Sprintf("%d%d", a, b))
-	checkError(err)
-	return result
+	return fmt.Sprintf("%d.%d", row, cl)
 }
 
 func transtoMat(grid []string) (res [][]int32, nRows, nCln int) {
@@ -246,7 +193,7 @@ func transtoMat(grid []string) (res [][]int32, nRows, nCln int) {
 	for _, v := range grid {
 		nCln = 0
 		row := make([]int32, 0)
-		//fmt.Println(v)
+
 		for _, s := range v {
 			nCln++
 			if s == 'G' {
@@ -257,7 +204,6 @@ func transtoMat(grid []string) (res [][]int32, nRows, nCln int) {
 
 		}
 		res = append(res, row)
-		//fmt.Printf("row = %v \n", row)
 
 	}
 	// fmt.Println(nRows, nCln)
@@ -315,23 +261,5 @@ func readLine(reader *bufio.Reader) string {
 func checkError(err error) {
 	if err != nil {
 		panic(err)
-	}
-}
-
-func example() {
-
-	guestList := []string{"bill", "jill", "joan"}
-	arrived := []string{"sally", "jill", "joan"}
-
-CheckList:
-	for _, guest := range guestList {
-		for _, person := range arrived {
-			fmt.Printf("Guest[%s] Person[%s]\n", guest, person)
-
-			if person == guest {
-				fmt.Printf("Let %s In\n", person)
-				break CheckList
-			}
-		}
 	}
 }
