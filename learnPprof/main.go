@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 package main
 
 import "fmt"
@@ -20,30 +18,3 @@ func fib(n int) int{
 
 }
 
-=======
-=======
->>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
-package main
-
-import "fmt"
-
-
-
-func main() {
-	fmt.Println("fib di 6 = ", fib(6))
-	
-}
-
-func fib(n int) int{
-	if n<2{
-		return n
-	}
-	
-	return fib(n-1) + fib(n-2)
-
-}
-
-<<<<<<< HEAD
->>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
-=======
->>>>>>> 98f53c3d1c0f579d67d7ab5b49572858dd203ce6
